@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 
-function Videocard({video ,delResUpdate,isCatagory}) {
+function Videocard({video ,delResUpdate,isCatagory,iss}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -44,6 +44,7 @@ function Videocard({video ,delResUpdate,isCatagory}) {
     <div>
       <Card style={{ width: '100%'  }} className='my-4'>
       {/* <Card.Img variant="top" onClick={handleShow} src="https://i.scdn.co/image/ab67616d0000b273bca30634e6cad10b97c03d21" /> */}
+      
       <Card.Img  style={{height:'200px'}} variant="top"  src={video?.thumbnail} draggable onDragStart={(e)=>ondrag(e,video?.id)} onClick={handleShow} />
       <Card.Body>
         {/* <Card.Title className='text-center'>Ae Dil He Mushkil</Card.Title> */}

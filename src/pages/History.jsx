@@ -18,6 +18,11 @@ const handleHistoryList=async()=>{
   console.log(res.data)
 }
 
+
+// const hh=(e)=>{
+//   setHistory([false])
+// }
+
 const handlehistoryDelete=async(id)=>{
   const res=await deleteHistory(id)
   console.log(res)
@@ -35,18 +40,19 @@ useEffect(()=>{
 },[])
   return (
     <div className='p-5 ' style={{backgroundColor:"#000"}}>
+    {/* <button onClick={handleHistoryList1}>daf</button> */}
       <h2 className='text-center pb-5'>Watch History <Link style={{float:"right", fontSize:"15px", textDecoration:"none", color:"#fff"}} to={'/home'}> Back to Home</Link></h2>
       <table className='table shadow rounded'>
         <tr className='bg-success '>
           <th className='p-3'>ID</th>
-          <th style={{}}>Thumbnail</th>
+          <th >Thumbnail</th>
           <th>Caption</th>
           <th>URL</th>
           <th>Date</th>
           <th></th>
         </tr>
         {
-          history.map((item,index)=>(
+          history?history.map((item,index)=>(
             <tr>
               <td className='p-3'>{index+1}</td>
               <td ><img src={item?.thumbnail} style={{backgroundColor:"#000"}} onClick={handleShow}  width={200} height={100} alt="" /></td>
@@ -58,12 +64,12 @@ useEffect(()=>{
               <td >{item?.date}</td>
               <td><span className='btn'  style={{backgroundColor:"#000"}}><i className="fa-solid fa-trash fa-lg " onClick={()=>handlehistoryDelete(item?.id)} style={{color: "#a80505"}}></i></span></td>
             </tr>
-          ))
+          )): <div className='text-danger text-center py-3'>No History Data Available</div>
         }
         
       </table>
       {
-         history.map((item)=>(
+         history?.map((item)=>(
         <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
           <Modal.Header closeButton>
             <Modal.Title>{item?.caption}</Modal.Title>

@@ -32,11 +32,11 @@ const delResUpdate=()=>{
         {/* <Videocard/> */}
         <Row >
           {
-            allVideos.map(item=>(
+            allVideos?allVideos.map(item=>(
               <Col sm={12} md={6}>
                 <Videocard video={item} delResUpdate={delResUpdate}/>
               </Col>
-            ))
+            )): <div className='text-danger text-center py-3'>No Video Data Available</div>
           }
         </Row>
     </div>

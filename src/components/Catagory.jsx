@@ -104,7 +104,7 @@ function Catagory() {
       <button onClick={handleShow} className='btn w-100 btn-primary p-3'>Add Catagory</button>
 
       {
-        catagories.map(item=>(
+        catagories?catagories.map(item=>(
           <div className='bg-primary m-3 p-3 border shadow rounded' droppable onDragOver={(e)=>dragOver(e)} onDrop={(e)=>onDropHandle(e,item?.id)}>
             <div>
               <span>
@@ -115,17 +115,19 @@ function Catagory() {
             </div>
             <div>
               {
-                item?.allVideos.map(video=>(
-                  <Videocard video={video} isCatagory={true}/>
-                ))
+                item?.allVideos?.map(video=>(
+                  <Videocard video={video} isCatagory={true} iss={true}/>
+                )) 
               }
-            </div>
+            </div> 
+    
+            
             
                       
            
             
           </div>
-        ))
+        )): <div className='text-danger text-center py-3'>No Data Available</div>
       }
 
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} >
